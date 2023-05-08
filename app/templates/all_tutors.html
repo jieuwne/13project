@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+
+{% for Tutors in results %}
+    {{Tutors[1]}} ({{Tutors[2]}})<br/>
+
+{% endfor %}
+{% endblock %}
