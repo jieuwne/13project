@@ -13,9 +13,9 @@ db.init_app(app)
 
 import app.models as models
 
-@app.route('/all_pizzas')
-def all_pizzas():
-    results = models.Pizza.query.all()
+@app.route('/all_levels')
+def all_level():
+    results = models.Subject.query.all()
     print(results)
     return "done"
 
