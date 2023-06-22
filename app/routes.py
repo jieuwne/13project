@@ -13,30 +13,24 @@ db.init_app(app)
 
 import app.models as models
 
-@app.route('/all_levels')
-def all_level():
-    results = models.Subject.query.all()
-    print(results)
-    return "done"
-
-
 @app.route('/')
 def home():
     return render_template('home.html', page_title = 'The Website')
 
 @app.route('/level/<int:level>')
 def show_level(level):
-    results = models.Subject.query.all()
-    return render_template('level.html', page_title = 'LEVEL')
+    results = models.Subject.query.filter_by(level)
+    return render_template('levels.html', page_title = 'LEVEL')
     if level<1 or level>3:
         abort(404)
 
-
-
-@app.route('/<Subjects>')
+@app.route('/Subjects/<str:name>')
 def Subjects (id):
-    Subjects = models.Subjects.query.filter_by(id=id).first()
+    Subjects = models.Subjects.query.filter_by(id=id).first_or_404()
     return render_template("Subjects.html", Subjects = Subjects)
+
+@app.route('/all_tutors')
+def tutors():
 
 
 @app.route('/contact')
