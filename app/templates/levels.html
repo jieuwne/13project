@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<br/>
+
+<div class = "subject_name">
+    {% for subject in subject_in_level %}
+        {% if level == subject.levels[0].id %}
+            <li>{{subject.name}}{{subject.levels[0].id}}</li>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
+{% endblock %}

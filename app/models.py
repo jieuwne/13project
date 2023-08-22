@@ -37,6 +37,8 @@ class Level(db.Model):
     subjects = db.relationship('Subject', secondary=SubjectLevel, back_populates='levels')
 
 
+
+
 class Subject(db.Model):
     __tablename__ = "Subject"
 
@@ -55,3 +57,6 @@ class Tutor(db.Model):
     
     subjects = db.relationship('Subject', secondary=SubjectTutor, back_populates='tutors')
     times = db.relationship('Time', secondary=TutorTime, back_populates='tutors')
+
+    def __repr__(self):
+        return self.name

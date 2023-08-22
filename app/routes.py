@@ -20,9 +20,13 @@ def home():
 def show_level(level):
     if level < 1 or level > 3:
         abort(404)
-    results = models.Subject.query.filter_by(level=level).first()
-    print(results.name)
-    return render_template('levels.html', page_title='LEVEL')
+    subject_in_level = models.Subject.query.all()
+    for result in subject_in_level:
+        if result.levels == level:
+            print(result) 
+
+
+    return render_template('levels.html', page_title='LEVEL', subject_in_level=subject_in_level, level=level)
   
 
 #@app.route('/subjects/<int:id>')
@@ -34,9 +38,11 @@ def show_level(level):
 
 @app.route('/all_tutors')
 def all_tutors():
-    results = models.Tutor.query.all()
-    print(results.name)
-    return render_template('all_tutors.html', page_title='ALL_TUTORS')
+    tutor_name = models.Tutor.query.all()
+    for result in tutor_name:
+        print(result)
+        
+    return render_template('all_tutors.html', page_title='ALL_TUTORS', tutor_name=tutor_name)
 
 @app.route('/tutor/<int:id>')
 def tutors(id):

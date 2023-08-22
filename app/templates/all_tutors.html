@@ -1,11 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h2 style="color:green;">Page under construction</h2>
+<h1>All Available Tutors</h1>
 
-<br/>
-{% for Tutor in results %}
-<br/>
-
-{% endfor %}
+<ul>
+    {% for tutor in tutor_name %}
+    <li>{{ tutor.name }} {{ tutor.description }}</li>
+    {% endfor %}
+</ul>
+</div>
 {% endblock %}
