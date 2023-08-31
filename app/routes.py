@@ -29,11 +29,14 @@ def show_level(level):
     return render_template('levels.html', page_title='LEVEL', subject_in_level=subject_in_level, level=level)
   
 
-#@app.route('/subjects/<int:id>')
-#def subjects(id): 
-    subject = models.Subject.query.filter_by(id=id).first()
-    print(subject.name, subject.level)
-    return render_template("subjects.html", subject=subject)
+@app.route('/tutors/<subject>/<int:level>')
+def tutor_subject(subject,level):
+    subjects = models.Subject.query.all()
+    for results in subjects:
+        if results.name == subject and results.levels[0].id == level:
+            print(results.tutors)
+
+    return render_template('tutor_for_level.html', page_title='TUTOR', subject = subject, subjects=subjects, level=level)
 
 
 @app.route('/all_tutors')
@@ -44,11 +47,6 @@ def all_tutors():
         
     return render_template('all_tutors.html', page_title='ALL_TUTORS', tutor_name=tutor_name)
 
-@app.route('/tutor/<int:id>')
-def tutors(id):
-    tutor = models.Tutor.query.filter_by(id=id).first_or_404()
-    print(tutor.name, tutor.description)
-    return render_template("all_tutors.html", tutor=tutor)
 
 @app.route('/contact')
 def contact():

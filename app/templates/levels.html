@@ -6,10 +6,29 @@
 <div class = "subject_name">
     {% for subject in subject_in_level %}
         {% if level == subject.levels[0].id %}
-            <li>{{subject.name}}{{subject.levels[0].id}}</li>
+            <li>{{subject.name}}.{{subject.levels[0].id}}</li>
         {% endif %}
     {% endfor %}
 
 </div>
+
+<div class="subjects">
+    <div class="for_level">
+        <a href="/tutors/physics/{{ level }}"><img src="/static/images/Physics.jpg" class = "subject"/>
+        </a>
+
+        <a href="/tutors/mathematics/{{ level }}"><img src="/static/images/Mathematics.jpg" class = "subject"/>
+        </a>
+    
+        <a href="/tutors/chemistry/{{ level }}"><img src="/static/images/Chemistry.jpg" class = "subject"/>
+        </a>
+
+        <a href="/tutors/biology/{{ level }}"><img src="/static/images/Biology.jpg" class = "subject"/>
+        </a>
+
+        <a href="/tutors/english/{{ level }}"><img src="/static/images/English.jpg" class = "subject"/>
+        </a>
+    </div>
+    </div>
 
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h2> tutors for this level </h2>
+<p> these are the tutors </p>
+
+<div class = "subject_tutor">
+{% for results in subjects %}
+{% if results.name == subject and results.levels[0].id == level %}
+    <li>{{ results.tutors.name }}</li>
+{% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}
